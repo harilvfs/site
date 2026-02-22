@@ -18,5 +18,10 @@
     "icon": "bi bi-envelope",
     "url": "mailto:harilvfs@chalisehari.com.np",
     "title": "Mail"
+  },
+  {
+    "icon": "bi bi-tree",
+    "url": "https://link.chalisehari.com.np",
+    "title": "My Links"
   }
 ]
