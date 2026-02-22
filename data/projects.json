@@ -1,0 +1,26 @@
+{
+  "title": "Projects",
+  "icon": "bi bi-kanban",
+  "list": [
+    {
+      "title": "Carch",
+      "url": "https://github.com/harilvfs/carch",
+      "description": "Rust-based CLI tool to automate Linux system setup"
+    },
+    {
+      "title": "Arch Wiki",
+      "url": "https://github.com/harilvfs/Arch-Wiki",
+      "description": "Arch Linux Installation Guide (OCD Edition)"
+    },
+    {
+      "title": "DWM",
+      "url": "https://github.com/harilvfs/dwm",
+      "description": "Custom Dynamic Window Manager config"
+    },
+    {
+      "title": "i3wmdotfiles",
+      "url": "https://github.com/harilvfs/i3wmdotfiles",
+      "description": "Dotfiles for the i3wm"
+    }
+  ]
+}

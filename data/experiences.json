@@ -1,0 +1,31 @@
+{
+  "title": "Experiences",
+  "icon": "bi bi-briefcase",
+  "list": [
+    {
+      "position": "Linux CLI Tool Developer",
+      "dates": "2024 - *Present*",
+      "company": "Personal Projects",
+      "details": [
+        "Making fast and simple command line tools using Rust (btw)."
+      ]
+    },
+    {
+      "position": "Bash Scripting Specialist",
+      "dates": "2023 - *Present*",
+      "company": "Personal Projects",
+      "details": [
+        "Writing Bash scripts to automate tasks.",
+        "Breaking stuff, fixing it, and learning in the process."
+      ]
+    },
+    {
+      "position": "Casual Designer",
+      "dates": "2021 - *Present*",
+      "company": "Personal Projects",
+      "details": [
+        "Sometimes I make style banners, logos, and other stuff.(Not the best but usable)"
+      ]
+    }
+  ]
+}

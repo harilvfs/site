@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "bi bi-twitter",
+    "url": "https://x.com/harilvfs",
+    "title": "Twitter"
+  },
+  {
+    "icon": "bi bi-github",
+    "url": "https://github.com/harilvfs",
+    "title": "GitHub"
+  },
+  {
+    "icon": "bi bi-bluesky",
+    "url": "https://bsky.app/profile/chalisehari.com.np",
+    "title": "Bluesky"
+  },
+  {
+    "icon": "bi bi-envelope",
+    "url": "mailto:harilvfs@chalisehari.com.np",
+    "title": "Mail"
+  }
+]

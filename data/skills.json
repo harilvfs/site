@@ -1,0 +1,27 @@
+{
+  "title": "Skills",
+  "panelId": "skill-panel",
+  "icon": "bi bi-list-check",
+  "list": [
+    {
+      "skill": "Linux (Arch btw), Bash Scripting",
+      "skillrating": 90
+    },
+    {
+      "skill": "Performance Tuning, System Administration",
+      "skillrating": 80
+    },
+    {
+      "skill": "Rust Programming",
+      "skillrating": 70
+    },
+    {
+      "skill": "Networking, Security Hardening",
+      "skillrating": 70
+    },
+    {
+      "skill": "Photoshop (unfortunately)",
+      "skillrating": 50
+    }
+  ]
+}

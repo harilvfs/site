@@ -1,0 +1,18 @@
+{
+  "title": "Education",
+  "icon": "bi bi-mortarboard",
+  "list": [
+    {
+      "degree": "+2 in Computer Management",
+      "college": "Some College in Nepal",
+      "dates": "2021 - 2023",
+      "thesis_title": "Learned basics of computers and programming. Somehow passed."
+    },
+    {
+      "degree": "SLC/SEE",
+      "college": "Some School",
+      "dates": "2016 - 2018",
+      "thesis_title": "Did okay. Nothing special."
+    }
+  ]
+}
