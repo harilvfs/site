@@ -1,0 +1,16 @@
+<h1 class="mb-1 text-xl font-semibold">{{ .Site.Data.profile.name }}</h1>
+<p class="text-xs text-stone-400 dark:text-stone-500 mb-3"><i class="bi bi-geo-alt"></i> {{ .Site.Data.profile.location }}</p>
+{{ if .Site.Data.profile.roles }}
+<div class="flex flex-wrap justify-center gap-1.5 mb-4">
+  {{ range .Site.Data.profile.roles }}
+  <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-600 dark:bg-neutral-800 dark:text-stone-300">{{ . }}</span>
+  {{ end }}
+</div>
+{{ end }}
+<div class="flex flex-wrap justify-center gap-3">
+  {{ range $key, $value := .Site.Data.social }}
+  <a class="text-stone-500 dark:text-stone-400 text-lg" href="{{ .url }}" title="{{ $value.title }}">
+    <i class="{{ $value.icon }}"></i>
+  </a>
+  {{ end }}
+</div>

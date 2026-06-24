@@ -2,24 +2,22 @@ baseURL: /
 languageCode: en-us
 build:
   writeStats: true
-title: HEy 
-# Uncomment below to use aafu as hugo theme. See instructions in README.md
+title: Hari Chalise
 theme: aafu
 
 params:
-  author: Darshan Baral # thanks for the theme
-  description: HEy 
-  copyright: © 2025 Hari Chalise
+  author: Hari Chalise
+  description: Linux enthusiast from Kathmandu, Nepal
+  copyright: "© 2025 Hari Chalise"
   theme:
     mainTheme: dark
     showAttribute: false
-    singlePage: true 
+    singlePage: true
   accordion:
     - item: about_me
-      expand: true # only the first `expand: true` will take effect
+      expand: true
     - item: experiences
     - item: education
-#    - item: publications
     - item: projects
     - item: skills
       panel_id: skill-panel

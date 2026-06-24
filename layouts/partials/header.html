@@ -1,0 +1,15 @@
+<header
+  class="nav flex flex-row py-3 mb-4 w-full border-b border-stone-200 dark:border-neutral-800 justify-between items-center"
+>
+  <div class="flex gap-1">
+    <a class="nav-menu-item" href="{{ .Site.BaseURL }}">Home</a>
+    <a class="nav-menu-item" href="{{ `blog` | relURL }}">Blog</a>
+  </div>
+  <div class="flex items-center gap-3">
+    <a href="{{ `search` | relURL }}" class="text-stone-500 dark:text-stone-400">
+      <i class="bi bi-search text-sm"></i>
+    </a>
+  </div>
+</header>
+
+{{ partial "toggleTheme.html" . }}

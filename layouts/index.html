@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="grid grid-cols-1 md:grid-cols-5 gap-6 py-6">
+  <div class="col-span-2 flex flex-col justify-center">
+    <div class="bg-white dark:bg-neutral-900 border border-stone-200 dark:border-neutral-800 rounded-lg p-6">
+      <div class="flex flex-col items-center">
+        {{ partial "profilePhoto" . }}
+        <div class="mt-4 text-center w-full">{{ partial "social" . }}</div>
+      </div>
+    </div>
+    {{ partial "footer" . }}
+  </div>
+  <div class="col-span-3">
+    {{ $found_expanded := false }}
+    {{ range .Site.Params.accordion }}
+    <div class="mb-1">
+      <h2 class="accordion {{- if and (.expand) (not $found_expanded) }} active {{- $found_expanded = true }} {{- end }}">
+        {{ $current := index $.Site.Data .item }}
+        <p onclick="expandAccordion(this)" class="flex items-center gap-2 cursor-pointer py-2.5 px-3 rounded-md text-stone-800 dark:text-stone-200">
+          <i class="{{ $current.icon }} text-lg opacity-60"></i>
+          {{ $current.title -}}
+        </p>
+      </h2>
+
+      <div
+        class="panel overflow-hidden px-3 ml-3 border-l border-stone-200 dark:border-neutral-800"
+        {{ if .panel_id }}
+        id="{{ .panel_id }}"
+        {{ end }}
+        {{ if .expand }}
+        {{ end }}
+      >
+        <div class="py-2">{{ partial (print "accordion/" .item) $ }}</div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,21 @@
+{{ range .Site.Data.experiences.list }}
+<div class="mb-4">
+  <h4 class="font-semibold">{{ .position }}</h4>
+  <p class="text-sm text-stone-500 dark:text-stone-400 mb-1">
+    {{ .dates | markdownify }} &middot;
+    {{ if .url }}
+    <a href="{{ .url }}">{{ .company }}</a>
+    {{ else }}
+    {{ .company }}
+    {{ end }}
+  </p>
+
+  {{ if .details }}
+  <ul class="mt-1 ml-4 text-sm text-stone-600 dark:text-stone-400 list-disc list-outside space-y-0.5">
+    {{ range .details }}
+    <li>{{ . | markdownify }}</li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</div>
+{{ end }}

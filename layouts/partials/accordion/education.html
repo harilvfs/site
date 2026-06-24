@@ -1,0 +1,20 @@
+{{ range .Site.Data.education.list }}
+<div class="mb-4">
+  <h4 class="font-semibold">{{ .degree }}</h4>
+  <p class="text-sm text-stone-500 dark:text-stone-400">
+    {{- .dates }} &middot; {{ .college -}}
+  </p>
+  {{ if .thesis_title }}
+  {{ if .thesis_url }}
+  <p class="text-sm mt-1 ml-4">
+    Thesis:
+    <a href="{{ .thesis_url }}"><i>{{ .thesis_title }}</i></a>
+  </p>
+  {{ else }}
+  <p class="text-sm mt-1 ml-4">
+    Thesis: <i>{{ .thesis_title }}</i>
+  </p>
+  {{ end }}
+  {{ end }}
+</div>
+{{ end }}

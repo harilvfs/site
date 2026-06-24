@@ -1,0 +1,7 @@
+<div class="w-full flex justify-center profile-photo-container">
+  <img
+    class="rounded-full w-32 h-32 object-cover border-2 border-stone-200 dark:border-neutral-700"
+    src="{{ `images` | relURL }}/{{ .Site.Data.profile.photo }}"
+    alt="{{ .Site.Data.profile.name }}"
+  />
+</div>
