@@ -7,10 +7,14 @@
   {{ end }}
 </div>
 {{ end }}
-<div class="flex flex-wrap justify-center gap-3">
+<div class="flex flex-wrap justify-center gap-3 mb-3">
   {{ range $key, $value := .Site.Data.social }}
   <a class="text-stone-500 dark:text-stone-400 text-lg" href="{{ .url }}" title="{{ $value.title }}">
     <i class="{{ $value.icon }}"></i>
   </a>
   {{ end }}
+</div>
+<div class="flex justify-center gap-4 text-xs font-medium">
+  <a href="{{ `blog` | relURL }}" class="text-stone-500 dark:text-stone-400">Blog</a>
+  <a href="{{ `search` | relURL }}" class="text-stone-500 dark:text-stone-400">Search</a>
 </div>

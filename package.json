@@ -2,6 +2,9 @@
   "name": "aafu",
   "version": "2025.11.30",
   "description": "The aafu theme is a responsive portfolio with blog.",
+  "scripts": {
+    "build": "hugo --minify && npx pagefind --site public"
+  },
   "main": "index.js",
   "keywords": [
     "hugo",
@@ -10,8 +13,9 @@
   "author": "Darshan Baral",
   "license": "MIT",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "@tailwindcss/typography": "^0.5.16",
-    "tailwindcss": "^4.1.11",
-    "@tailwindcss/cli": "^4.1.11"
+    "pagefind": "^1.5.2",
+    "tailwindcss": "^4.1.11"
   }
 }

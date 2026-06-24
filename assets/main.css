@@ -37,7 +37,7 @@
     @apply text-sm font-medium mb-1 mt-0;
   }
   a {
-    @apply text-blue-600 dark:text-blue-400;
+    @apply text-blue-600 dark:text-blue-400 hover:underline;
   }
   body {
     @apply text-[15px] leading-relaxed bg-stone-50 dark:text-stone-200 dark:bg-neutral-950;

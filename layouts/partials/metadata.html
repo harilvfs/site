@@ -1,4 +1,5 @@
 <p class="mt-0 mb-0 text-sm">{{ .Date.Format "January 2, 2006" }}</p>
+<p class="mt-1 mb-0 text-sm">by <a href="{{ with .Params.authorLink }}{{ . }}{{ else }}{{ (index .Site.Data.social 0).url }}{{ end }}" class="text-stone-600 dark:text-stone-300 hover:underline">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Data.profile.name }}{{ end }}</a></p>
 <p class="mt-1 mb-0 text-sm">Reading Time: {{ .ReadingTime }} minutes</p>
 {{ $params := .Params }} {{ range $name, $value := .Site.Taxonomies }}
 {{ if index $params $name }}
