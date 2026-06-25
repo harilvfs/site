@@ -7,7 +7,9 @@ tags: ["linux", "arch", "bash"]
 categories: ["linux"]
 ---
 
-I've been using Arch Linux for 3 years now I guess, and here's why i love it and just works for me.
+**I've been using Arch Linux for 3 years now I guess, and here's why i love it and just works for me.**
+
+*Also this is my linux journey.*
 
 It's been 4 years since I started daily driving Linux. I started using Linux with Debian-based distros like Zorin and Debian itself. But after going back and forth and not understanding much, I started to distro hop.
 
