@@ -3,7 +3,8 @@
   "version": "2025.11.30",
   "description": "The aafu theme is a responsive portfolio with blog.",
   "scripts": {
-    "build": "hugo --minify && npx pagefind --site public"
+    "build": "rm -rf public && hugo --minify && bunx pagefind --site public",
+    "preview": "bunx serve public"
   },
   "main": "index.js",
   "keywords": [

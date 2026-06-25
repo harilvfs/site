@@ -1,4 +1,4 @@
-baseURL: /
+baseURL: https://chalisehari.com.np/
 languageCode: en-us
 build:
   writeStats: true
