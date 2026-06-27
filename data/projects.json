@@ -26,6 +26,11 @@
       "title": "i3wmdotfiles",
       "url": "https://github.com/harilvfs/i3wmdotfiles",
       "description": "Dotfiles for the i3wm"
+    },
+    {
+      "title": "Ladybird Nightly",
+      "url": "https://github.com/harilvfs/ladybird-nightly",
+      "description": "Unofficial nightly builds of Ladybird Browser for Linux"
     }
   ]
 }
