@@ -5,12 +5,12 @@
     {
       "title": "Carch",
       "url": "https://github.com/harilvfs/carch",
-      "description": "Rust-based CLI tool to automate Linux system setup"
+      "description": "A CLI tool to automate Linux system setup"
     },
     {
       "title": "npltz",
       "url": "https://github.com/harilvfs/npltz",
-      "description": "A terminal-based Nepali calendar (Bikram Sambat) viewer with an interactive TUI"
+      "description": "Nepali BS Calendar (Patro) TUI for Terminal"
     },
     {
       "title": "Arch Wiki",
