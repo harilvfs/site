@@ -1,26 +1,26 @@
-<div class="flex flex-row justify-around my-2">
-  <h3 class="mb-1 mt-1 text-left mr-4">
+<div class="flex justify-between items-center my-6 py-4 border-t border-b border-stone-100 dark:border-neutral-800">
+  <div class="flex-1">
     {{ if .PrevInSection }}
     <a
       href="{{ .PrevInSection.Permalink | relURL }}"
+      class="group text-left no-underline"
       title="{{ .PrevInSection.Title }}"
     >
-      <i class="nav-menu bi bi-caret-left"></i>
+      <span class="text-xs text-stone-400 dark:text-stone-500 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors"><i class="bi bi-arrow-left"></i> Previous</span>
+      <p class="text-sm font-medium text-stone-700 dark:text-stone-300 mt-0.5 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{{ .PrevInSection.Title }}</p>
     </a>
-    {{ else }}
-    <i class="text-stone-300 dark:text-stone-700 bi bi-caret-left"></i>
     {{ end }}
-  </h3>
-  <h3 class="mb-1 mt-1 text-left ml-4">
+  </div>
+  <div class="flex-1 text-right">
     {{ if .NextInSection }}
     <a
       href="{{ .NextInSection.Permalink | relURL }}"
+      class="group text-right no-underline"
       title="{{ .NextInSection.Title }}"
     >
-      <i class="nav-menu bi bi-caret-right"></i>
+      <span class="text-xs text-stone-400 dark:text-stone-500 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors">Next <i class="bi bi-arrow-right"></i></span>
+      <p class="text-sm font-medium text-stone-700 dark:text-stone-300 mt-0.5 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{{ .NextInSection.Title }}</p>
     </a>
-    {{ else }}
-    <i class="text-stone-300 dark:text-stone-700 bi bi-caret-right"></i>
     {{ end }}
-  </h3>
+  </div>
 </div>

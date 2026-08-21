@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{ .Scratch.Set "figure_count" 1 }}
+<div id="reading-progress" class="fixed top-0 left-0 h-1 bg-stone-800 dark:bg-stone-200 z-50 transition-none" style="width: 0%"></div>
 <div class="prose prose-stone dark:prose-invert max-w-none">
 <div class="mb-3">
   <h1 class="top-h1">{{- .Title -}}</h1>
@@ -12,4 +13,14 @@
 </div>
 {{ partial "prevnext" . }}
 {{ partial "giscus" . }}
+
+<script>
+  const bar = document.getElementById("reading-progress");
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = progress + "%";
+  });
+</script>
 {{ end }}

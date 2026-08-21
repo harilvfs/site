@@ -6,9 +6,12 @@
   <p class="text-stone-500 dark:text-stone-400 text-sm -mt-2 mb-4">{{ . }}</p>
   {{ end }}
 
-<div class="max-w-none">
+  <script src="{{ `pagefind/pagefind-ui.js` | relURL }}"></script>
+  <div id="search" class="mb-6"></div>
+
+<div id="blog-list" class="max-w-none">
   {{ range (.Paginator 10).Pages }}
-  <div class="py-4 border-b border-stone-100 dark:border-neutral-800 last:border-b-0">
+  <div class="blog-entry py-4 border-b border-stone-100 dark:border-neutral-800 last:border-b-0 pl-3 border-l-2 border-l-transparent transition-colors duration-200 hover:border-l-stone-300 dark:hover:border-l-neutral-600">
     <a href="{{ .Permalink | relURL }}" class="text-base font-semibold text-stone-800 dark:text-stone-200 hover:underline no-underline">{{ .Title }}</a>
     <p class="text-xs text-stone-400 dark:text-stone-500 mt-1 mb-1">
       {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
@@ -20,7 +23,94 @@
   {{ end }}
 </div>
 
-<div class="my-6 flex justify-center pagination-links">
+<div id="blog-pagination" class="my-6 flex justify-center pagination-links">
   {{ template "_internal/pagination.html" (dict "page" . "format" "terse") }}
 </div>
+
+  <style>
+    .pagefind-ui {
+      --pagefind-ui-scale: 1;
+    }
+    .pagefind-ui__search-input {
+      border: none !important;
+      border-bottom: 1px solid #a8a29e !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      padding: 0.5em 0 !important;
+      width: 100% !important;
+      font-size: 1rem !important;
+      outline: none !important;
+    }
+    .dark .pagefind-ui__search-input {
+      border-bottom-color: #57534e !important;
+    }
+    .pagefind-ui__search-input:focus {
+      border-bottom-color: #2563eb !important;
+    }
+    .dark .pagefind-ui__search-input:focus {
+      border-bottom-color: #60a5fa !important;
+    }
+    .pagefind-ui__search-clear {
+      display: none !important;
+    }
+    .pagefind-ui__results {
+      margin-top: 1.5rem;
+    }
+    .pagefind-ui__result {
+      border: none !important;
+      border-bottom: 1px solid #f5f5f4 !important;
+      border-radius: 0 !important;
+      padding: 1rem 0 !important;
+      box-shadow: none !important;
+    }
+    .dark .pagefind-ui__result {
+      border-bottom-color: #1c1917 !important;
+    }
+    .pagefind-ui__result-title {
+      font-size: 0.9rem !important;
+      font-weight: 600 !important;
+    }
+    .pagefind-ui__result-title a {
+      color: #1c1917 !important;
+      text-decoration: none !important;
+    }
+    .dark .pagefind-ui__result-title a {
+      color: #e7e5e4 !important;
+    }
+    .pagefind-ui__result-title a:hover {
+      text-decoration: underline !important;
+    }
+    .pagefind-ui__result-excerpt {
+      font-size: 0.75rem !important;
+      color: #78716c !important;
+    }
+    .dark .pagefind-ui__result-excerpt {
+      color: #78716c !important;
+    }
+    .pagefind-ui__message {
+      font-size: 0.75rem !important;
+      color: #a8a29e !important;
+    }
+  </style>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      new PagefindUI({ element: "#search", showSubResults: true, placeholderText: "Search posts..." });
+
+      const searchInput = document.querySelector(".pagefind-ui__search-input");
+      const blogList = document.getElementById("blog-list");
+      const blogPagination = document.getElementById("blog-pagination");
+
+      const toggleBlog = () => {
+        const hasQuery = searchInput && searchInput.value.trim().length > 0;
+        if (blogList) blogList.style.display = hasQuery ? "none" : "block";
+        if (blogPagination) blogPagination.style.display = hasQuery ? "none" : "flex";
+      };
+
+      if (searchInput) {
+        searchInput.addEventListener("input", toggleBlog);
+        setInterval(toggleBlog, 300);
+      }
+    });
+  </script>
 {{ end }}

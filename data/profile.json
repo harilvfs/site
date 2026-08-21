@@ -4,7 +4,13 @@
   "location": "Kathmandu, Nepal",
   "photo": "profile.jpg",
   "roles": [
-    "Linux Enthusiast",
-    "OSS Contributor"
+    {
+      "name": "Linux Enthusiast",
+      "description": "I have myself tagged this so I am kinda confident"
+    },
+    {
+      "name": "OSS Contributor",
+      "description": "I sometime contribute to oss project community i love doing that and i disappear"
+    }
   ]
 }

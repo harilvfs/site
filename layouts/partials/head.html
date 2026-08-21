@@ -128,8 +128,32 @@
       }
     };
 
+    const toggleRole = (btn) => {
+      const wrapper = btn.closest(".relative");
+      const bubble = wrapper.querySelector(".role-bubble");
+      if (!bubble) return;
+      const isShown = bubble.style.opacity === "1";
+      document.querySelectorAll(".role-bubble").forEach(b => {
+        b.style.opacity = "0";
+        b.style.transform = "translateX(-50%) scale(0.95)";
+      });
+      if (!isShown) {
+        bubble.style.opacity = "1";
+        bubble.style.transform = "translateX(-50%) scale(1)";
+      }
+    };
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".relative")) {
+        document.querySelectorAll(".role-bubble").forEach(b => {
+          b.style.opacity = "0";
+          b.style.transform = "translateX(-50%) scale(0.95)";
+        });
+      }
+    });
+
     document.addEventListener("DOMContentLoaded", () => {
-      const reveals = document.querySelectorAll(".reveal");
+      const reveals = document.querySelectorAll(".reveal, .blog-entry");
       if (reveals.length === 0) return;
 
       const observer = new IntersectionObserver(
@@ -151,6 +175,7 @@
   <script>
     let html = document.querySelector("html");
     let theme = window.localStorage.getItem("theme");
+    const configTheme = "{{ .Site.Params.theme.mainTheme }}";
 
     const setTheme = (theme) => {
       html.classList.remove("light");
@@ -171,21 +196,8 @@
       }
     };
 
-    if (theme == null) {
-      if (html.classList.contains("dark")) {
-        theme = "dark";
-      } else if (html.classList.contains("light")) {
-        theme = "light";
-      } else {
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        if (prefersDark) {
-          theme = "dark";
-        } else {
-          theme = "light";
-        }
-      }
+    if (theme == null || (configTheme && !window.localStorage.getItem("theme"))) {
+      theme = configTheme || "dark";
     }
 
     setTheme(theme);

@@ -3,7 +3,19 @@
 {{ if .Site.Data.profile.roles }}
 <div class="flex flex-wrap justify-center gap-1.5 mb-4">
   {{ range .Site.Data.profile.roles }}
-  <span class="text-xs px-2 py-0.5 rounded-full bg-stone-200 text-stone-600 dark:bg-neutral-800 dark:text-stone-300">{{ . }}</span>
+  <div class="relative inline-block">
+    <span onclick="toggleRole(this)" class="text-xs px-2 py-0.5 rounded-full border border-stone-200 dark:border-neutral-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-neutral-800 transition-colors duration-200 cursor-pointer select-none">{{ .name }}</span>
+    <div class="role-bubble absolute left-1/2 mt-2 w-52 text-[11px] text-center leading-snug z-10 pointer-events-none" style="transform: translateX(-50%); opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; transform-origin: bottom center;">
+      <div class="flex justify-center gap-0.5 mb-0.5">
+        <span class="w-1 h-1 rounded-full bg-stone-300 dark:bg-neutral-600"></span>
+        <span class="w-1 h-1 rounded-full bg-stone-300 dark:bg-neutral-600"></span>
+        <span class="w-1 h-1 rounded-full bg-stone-300 dark:bg-neutral-600"></span>
+      </div>
+      <div class="bg-stone-100 dark:bg-neutral-800 border border-stone-200 dark:border-neutral-700 rounded-xl px-3 py-2 shadow-sm relative">
+        <span class="relative text-stone-600 dark:text-stone-300">{{ .description }}</span>
+      </div>
+    </div>
+  </div>
   {{ end }}
 </div>
 {{ end }}
@@ -14,7 +26,8 @@
   </a>
   {{ end }}
 </div>
-<div class="flex justify-center gap-4 text-xs font-medium">
-  <a href="{{ `blog` | relURL }}" class="text-stone-500 dark:text-stone-400">Blog</a>
-  <a href="{{ `search` | relURL }}" class="text-stone-500 dark:text-stone-400">Search</a>
+<div class="flex justify-center mt-2">
+  <a href="{{ `blog` | relURL }}" class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md border border-stone-200 dark:border-neutral-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-neutral-800 transition-colors duration-200">
+    <i class="bi bi-pen text-[10px] opacity-60"></i> Blog
+  </a>
 </div>
