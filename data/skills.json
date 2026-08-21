@@ -4,19 +4,24 @@
   "icon": "bi bi-list-check",
   "list": [
     {
-      "skill": "Linux, Bash Scripting(i'am better)"
+      "skill": "Linux, Bash Scripting",
+      "level": 85
     },
     {
-      "skill": "Performance Tuning, System Administration(i'am good)"
+      "skill": "Performance Tuning, System Administration",
+      "level": 75
     },
     {
-      "skill": "Rust Programming(skill issue here)"
+      "skill": "Designing",
+      "level": 60
     },
     {
-      "skill": "Networking(basic)"
+      "skill": "Networking",
+      "level": 50
     },
     {
-      "skill": "Designing(not best but usable)"
+      "skill": "Rust Programming",
+      "level": 40
     }
   ]
 }

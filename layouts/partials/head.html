@@ -53,11 +53,18 @@
       transition: max-height 0.3s ease-out;
     }
 
+    .panel > .panel-reveal > * {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    .panel > .panel-reveal.revealed > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .profile-photo-container img {
       max-width: 100%;
     }
-
-
 
     .pagefind-ui__search-clear {
       display: none;
@@ -68,30 +75,77 @@
     const expandAccordion = (elem) => {
       const allPanels = Array.from(document.querySelectorAll(".panel"));
       const allAccordion = Array.from(document.querySelectorAll(".accordion"));
+      const clicked = elem.parentElement;
 
-      if (!elem.parentElement.classList.contains("active")) {
-        allAccordion.forEach((acc) => {
-          acc.classList.remove("active");
+      if (clicked.classList.contains("active")) {
+        clicked.classList.remove("active");
+        clicked.nextElementSibling.style.maxHeight = null;
+        const reveal = clicked.nextElementSibling.querySelector(".panel-reveal");
+        if (reveal) reveal.classList.remove("revealed");
+        return;
+      }
+
+      allAccordion.forEach((acc) => {
+        acc.classList.remove("active");
+      });
+      clicked.classList.add("active");
+      allPanels.forEach(function (panel) {
+        panel.style.maxHeight = null;
+        const reveal = panel.querySelector(".panel-reveal");
+        if (reveal) reveal.classList.remove("revealed");
+      });
+      let activePanel = clicked.nextElementSibling;
+
+      if (
+        activePanel.id != "skill-panel" &&
+        document.querySelector("#skill-panel")
+      ) {
+        let skillBars = Array.from(
+          document.querySelectorAll("#skill-percent")
+        );
+        skillBars.forEach((bar) => {
+          bar.style.width = "0";
         });
-        elem.parentElement.classList.add("active");
-        allPanels.forEach(function (elem) {
-          elem.style.maxHeight = null;
+      }
+
+      activePanel.style.maxHeight = activePanel.scrollHeight + "px";
+
+      const reveal = activePanel.querySelector(".panel-reveal");
+      if (reveal) {
+        requestAnimationFrame(() => {
+          reveal.classList.add("revealed");
         });
-        let activePanel = elem.parentElement.nextElementSibling;
-        if (
-          activePanel.id != "skill-panel" &&
-          document.querySelector("#skill-panel")
-        ) {
-          let skillBars = Array.from(
-            document.querySelectorAll("#skill-percent")
-          );
-          skillBars.forEach((elem) => {
-            elem.style.width = "0";
-          });
-        }
-        activePanel.style.maxHeight = activePanel.scrollHeight + "px";
+      }
+
+      if (activePanel.id === "skill-panel") {
+        const skillBars = activePanel.querySelectorAll("#skill-percent");
+        skillBars.forEach((bar, i) => {
+          bar.style.width = "0";
+          setTimeout(() => {
+            bar.style.width = bar.dataset.width;
+          }, 100 + i * 80);
+        });
       }
     };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const reveals = document.querySelectorAll(".reveal");
+      if (reveals.length === 0) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }
+      );
+
+      reveals.forEach((el) => observer.observe(el));
+    });
   </script>
 
   <script>
@@ -147,6 +201,18 @@
       if (defaultActivePanel) {
         defaultActivePanel.nextElementSibling.style.maxHeight =
           defaultActivePanel.nextElementSibling.scrollHeight + "px";
+
+        const reveal = defaultActivePanel.nextElementSibling.querySelector(".panel-reveal");
+        if (reveal) {
+          requestAnimationFrame(() => reveal.classList.add("revealed"));
+        }
+
+        if (defaultActivePanel.nextElementSibling.id === "skill-panel") {
+          const skillBars = defaultActivePanel.nextElementSibling.querySelectorAll("#skill-percent");
+          skillBars.forEach((bar, i) => {
+            setTimeout(() => { bar.style.width = bar.dataset.width; }, 200 + i * 80);
+          });
+        }
       }
     };
 

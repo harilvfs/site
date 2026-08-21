@@ -9,7 +9,7 @@
 {{ end }}
 <div class="flex flex-wrap justify-center gap-3 mb-3">
   {{ range $key, $value := .Site.Data.social }}
-  <a class="text-stone-500 dark:text-stone-400 text-lg" href="{{ .url }}" title="{{ $value.title }}">
+  <a class="social-link text-stone-500 dark:text-stone-400 text-lg" href="{{ .url }}" title="{{ $value.title }}">
     <i class="{{ $value.icon }}"></i>
   </a>
   {{ end }}

@@ -91,7 +91,74 @@
   .accordion {
     @apply text-stone-800 dark:text-stone-200 my-0 font-semibold;
     > p {
-      @apply my-0 py-2 px-1 cursor-pointer rounded;
+      @apply my-0 py-2 px-1 cursor-pointer rounded transition-colors duration-200;
     }
   }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.panel-reveal > * {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+}
+.panel-reveal.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.panel-reveal.revealed > *:nth-child(1) { transition-delay: 0.05s; }
+.panel-reveal.revealed > *:nth-child(2) { transition-delay: 0.1s; }
+.panel-reveal.revealed > *:nth-child(3) { transition-delay: 0.15s; }
+.panel-reveal.revealed > *:nth-child(4) { transition-delay: 0.2s; }
+.panel-reveal.revealed > *:nth-child(5) { transition-delay: 0.25s; }
+.panel-reveal.revealed > *:nth-child(6) { transition-delay: 0.3s; }
+.panel-reveal.revealed > *:nth-child(7) { transition-delay: 0.35s; }
+.panel-reveal.revealed > *:nth-child(8) { transition-delay: 0.4s; }
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+::selection {
+  background: #a8a29e;
+  color: #1c1917;
+}
+.dark ::selection {
+  background: #57534e;
+  color: #fafaf9;
+}
+
+.accordion > p:hover {
+  background-color: rgba(0, 0, 0, 0.025);
+}
+.dark .accordion > p:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.social-link {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.social-link:hover {
+  transform: translateY(-2px) scale(1.1);
+  opacity: 0.8;
+}
+
+.skill-bar {
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }

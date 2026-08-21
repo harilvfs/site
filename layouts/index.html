@@ -11,8 +11,8 @@
   </div>
   <div class="col-span-1 md:col-span-3">
     {{ $found_expanded := false }}
-    {{ range .Site.Params.accordion }}
-    <div class="mb-1">
+    {{ range $index, $section := .Site.Params.accordion }}
+    <div class="mb-1 reveal" style="transition-delay: {{ mul $index 0.06 }}s">
       <h2 class="accordion {{- if and (.expand) (not $found_expanded) }} active {{- $found_expanded = true }} {{- end }}">
         {{ $current := index $.Site.Data .item }}
         <p onclick="expandAccordion(this)" class="flex items-center gap-2 cursor-pointer py-2.5 px-3 rounded-md text-stone-800 dark:text-stone-200">
@@ -29,7 +29,7 @@
         {{ if .expand }}
         {{ end }}
       >
-        <div class="py-2">{{ partial (print "accordion/" .item) $ }}</div>
+        <div class="py-2 panel-reveal">{{ partial (print "accordion/" .item) $ }}</div>
       </div>
     </div>
     {{ end }}

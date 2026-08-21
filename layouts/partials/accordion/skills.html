@@ -1,5 +1,11 @@
 {{ range .Site.Data.skills.list }}
-<div class="mb-2">
-  <span class="text-sm text-stone-700 dark:text-stone-300">{{ .skill }}</span>
+<div class="mb-3 skill-item">
+  <div class="flex justify-between items-baseline mb-1">
+    <span class="text-sm text-stone-700 dark:text-stone-300">{{ .skill }}</span>
+    <span class="text-xs text-stone-400 dark:text-stone-500 tabular-nums">{{ .level }}%</span>
+  </div>
+  <div class="h-1.5 rounded-full bg-stone-200 dark:bg-neutral-800 overflow-hidden">
+    <div id="skill-percent" class="skill-bar h-full rounded-full bg-stone-400 dark:bg-stone-500 transition-all duration-700 ease-out" style="width: 0" data-width="{{ .level }}%"></div>
+  </div>
 </div>
 {{ end }}
