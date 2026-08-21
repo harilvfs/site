@@ -19,13 +19,6 @@
   {{ end }}
 </div>
 {{ end }}
-<div class="flex flex-wrap justify-center gap-3 mb-3">
-  {{ range $key, $value := .Site.Data.social }}
-  <a class="social-link text-stone-500 dark:text-stone-400 text-lg" href="{{ .url }}" title="{{ $value.title }}">
-    <i class="{{ $value.icon }}"></i>
-  </a>
-  {{ end }}
-</div>
 <div class="flex justify-center mt-2">
   <a href="{{ `blog` | relURL }}" class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md border border-stone-200 dark:border-neutral-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-neutral-800 transition-colors duration-200">
     <i class="bi bi-pen text-[10px] opacity-60"></i> Blog
