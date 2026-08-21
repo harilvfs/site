@@ -2,6 +2,16 @@ baseURL: https://chalisehari.com.np/
 languageCode: en-us
 build:
   writeStats: true
+
+security:
+  exec:
+    allow:
+      - '^(dart-)?sass$'
+      - '^go$'
+      - '^git$'
+      - '^node$'
+      - '^postcss$'
+      - '^tailwindcss$'
 title: Hari Chalise
 theme: aafu
 

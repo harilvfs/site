@@ -11,14 +11,11 @@
 
 <div id="blog-list" class="max-w-none">
   {{ range (.Paginator 10).Pages }}
-  <div class="blog-entry py-4 border-b border-stone-100 dark:border-neutral-800 last:border-b-0 pl-3 border-l-2 border-l-transparent transition-colors duration-200 hover:border-l-stone-300 dark:hover:border-l-neutral-600">
-    <a href="{{ .Permalink | relURL }}" class="text-base font-semibold text-stone-800 dark:text-stone-200 hover:underline no-underline">{{ .Title }}</a>
-    <p class="text-xs text-stone-400 dark:text-stone-500 mt-1 mb-1">
+  <div class="py-3 border-b border-stone-100 dark:border-neutral-800 last:border-b-0">
+    <a href="{{ .Permalink | relURL }}" class="text-lg font-semibold text-stone-800 dark:text-stone-200 hover:underline no-underline">{{ .Title }} <span class="text-stone-300 dark:text-stone-600">&rarr;</span></a>
+    <p class="text-xs text-stone-400 dark:text-stone-500 mt-0.5 mb-0">
       {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
-      {{ with .Params.author }} · by <a href="{{ with $.Params.authorLink }}{{ . }}{{ else }}{{ (index $.Site.Data.social 0).url }}{{ end }}" class="text-blue-600 dark:text-blue-400 hover:underline">{{ . }}</a>{{ end }}
     </p>
-    {{ with .Params.categories }}<p class="text-xs text-stone-400 dark:text-stone-500 m-0"><span class="font-medium">Category:</span> {{ delimit . ", " }}</p>{{ end }}
-    {{ with .Params.tags }}<p class="text-xs text-stone-400 dark:text-stone-500 m-0"><span class="font-medium">Tags:</span> {{ delimit . ", " }}</p>{{ end }}
   </div>
   {{ end }}
 </div>

@@ -4,8 +4,8 @@
 <div class="prose prose-stone dark:prose-invert max-w-none">
 <div class="mb-3">
   <h1 class="top-h1">{{- .Title -}}</h1>
-  <p class="mb-1 text-sm text-stone-500 dark:text-stone-400">{{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>
-  <p class="text-sm text-stone-500 dark:text-stone-400">by <a href="{{ with .Params.authorLink }}{{ . }}{{ else }}{{ (index .Site.Data.social 0).url }}{{ end }}" class="text-stone-600 dark:text-stone-300 hover:underline">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Data.profile.name }}{{ end }}</a></p>
+  <p class="text-sm text-stone-500 dark:text-stone-400">{{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read · by <a href="{{ with .Params.authorLink }}{{ . }}{{ else }}{{ (index .Site.Data.social 0).url }}{{ end }}" class="text-stone-600 dark:text-stone-300 hover:underline">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Data.profile.name }}{{ end }}</a></p>
+  {{ with .Params.tags }}<p class="text-stone-400 dark:text-stone-500 mt-1 mb-0">{{ range . }}#{{ . }} {{ end }}</p>{{ end }}
 </div>
 <div class="content">
   {{ .Content }}

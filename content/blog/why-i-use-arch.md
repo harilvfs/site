@@ -3,7 +3,7 @@ title: "Why I Use Arch, btw"
 date: 2026-06-24
 author: "Hari Chalise"
 authorLink: "https://x.com/harilvfs"
-tags: ["linux", "arch", "bash"]
+tags: ["linux"]
 categories: ["linux"]
 ---
 
