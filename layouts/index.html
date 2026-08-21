@@ -7,8 +7,9 @@
         onclick="toggleTheme()"
         aria-label="Toggle theme"
       >
-        <i class="bi bi-moon text-sm"></i>
+        <i class="text-sm"></i>
       </button>
+      <script>var t=localStorage.getItem("theme"),i=document.querySelector(".theme-toggle i");if(i){i.className=t==="light"?"bi bi-moon text-sm":"bi bi-sun text-sm"}</script>
       <div class="flex flex-col items-center">
         {{ partial "profilePhoto" . }}
         <div class="mt-4 text-center w-full">{{ partial "social" . }}</div>

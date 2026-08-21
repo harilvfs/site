@@ -207,6 +207,7 @@
     };
 
     window.onload = () => {
+      fixThemeToggleIcon(theme);
       let defaultActivePanel = document.querySelector(".accordion.active");
       if (defaultActivePanel) {
         defaultActivePanel.nextElementSibling.style.maxHeight =
