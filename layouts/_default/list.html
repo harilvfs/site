@@ -1,4 +1,7 @@
 {{ define "main" }}
+  <a href="{{ .Site.Home.RelPermalink }}" class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md border border-stone-200 dark:border-neutral-700 hover:bg-stone-100 dark:hover:bg-neutral-800 transition-colors duration-200 mb-4 no-underline" style="color: inherit;">
+    <i class="bi bi-arrow-left text-[10px] opacity-60"></i> Home
+  </a>
   <h1 class="standard {{ if eq .Kind `term` }}font-italic{{ end }}">
     {{ if eq .Kind "term" }}#{{ .Data.Term }}{{ else }}{{- .Title -}}{{ end }}
   </h1>
