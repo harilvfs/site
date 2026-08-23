@@ -5,6 +5,7 @@ author: "Hari Chalise"
 authorLink: "https://x.com/harilvfs"
 tags: ["linux"]
 categories: ["linux"]
+lastmod: 2026-08-23
 ---
 
 **I've been using [Arch Linux](https://archlinux.org) for 3 years now I guess, and here's why i love it and just works for me.**

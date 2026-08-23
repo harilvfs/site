@@ -1,0 +1,11 @@
+<div class="space-y-2">
+  {{ range .Site.Data.currently.list }}
+  <div class="flex items-start gap-2.5">
+    <i class="{{ .icon }} text-sm opacity-50 mt-0.5"></i>
+    <div>
+      <span class="text-xs text-stone-400 dark:text-stone-500">{{ .label }}</span>
+      <p class="text-sm text-stone-700 dark:text-stone-300 mt-0">{{ .value }}</p>
+    </div>
+  </div>
+  {{ end }}
+</div>

@@ -7,7 +7,7 @@
     <i class="bi bi-arrow-left text-[10px] opacity-60"></i> Back
   </a>
   <h1 class="top-h1">{{- .Title -}}</h1>
-  <p class="text-sm text-stone-500 dark:text-stone-400">{{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read · by <a href="{{ with .Params.authorLink }}{{ . }}{{ else }}{{ (index .Site.Data.social 0).url }}{{ end }}" class="text-stone-600 dark:text-stone-300 hover:underline">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Data.profile.name }}{{ end }}</a></p>
+  <p class="text-sm text-stone-500 dark:text-stone-400">{{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read · by <a href="{{ with .Params.authorLink }}{{ . }}{{ else }}{{ (index .Site.Data.social 0).url }}{{ end }}" class="text-stone-600 dark:text-stone-300 hover:underline">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Data.profile.name }}{{ end }}</a>{{ if and .Lastmod (ne .Lastmod .Date) }} · <span class="text-stone-400 dark:text-stone-500">Last updated {{ .Lastmod.Format "January 2, 2006" }}</span>{{ end }}</p>
   {{ with .Params.tags }}<p class="text-stone-400 dark:text-stone-500 mt-1 mb-0">{{ range . }}#{{ . }} {{ end }}</p>{{ end }}
 </div>
 <div class="content">

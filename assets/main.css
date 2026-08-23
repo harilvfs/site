@@ -151,6 +151,10 @@ body::after {
   background-color: rgba(255, 255, 255, 0.04);
 }
 
+#projects-panel a:hover {
+  text-decoration: none;
+}
+
 .skill-bar {
   transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -171,5 +175,38 @@ body::after {
 .blog-entry:nth-child(5) { transition-delay: 0.25s; }
 
 #reading-progress {
+  will-change: width;
+}
+
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
+  font-weight: 100;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #44403c;
+  color: #fafaf9;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  z-index: 10000;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+#home-progress {
   will-change: width;
 }

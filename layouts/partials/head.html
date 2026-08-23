@@ -143,13 +143,21 @@
       }
     };
 
+    const closeAllRoles = () => {
+      document.querySelectorAll(".role-bubble").forEach(b => {
+        b.style.opacity = "0";
+        b.style.transform = "translateX(-50%) scale(0.95)";
+      });
+    };
+
     document.addEventListener("click", (e) => {
-      if (!e.target.closest(".relative")) {
-        document.querySelectorAll(".role-bubble").forEach(b => {
-          b.style.opacity = "0";
-          b.style.transform = "translateX(-50%) scale(0.95)";
-        });
+      if (!e.target.closest(".role-bubble") && !e.target.matches("[onclick*='toggleRole']")) {
+        closeAllRoles();
       }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAllRoles();
     });
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -235,4 +243,133 @@
       }
     };
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const el = document.getElementById("typed-tagline");
+      if (!el) return;
+      const phrases = ["Hi", "Hello", "Welcome :)"];
+      let phraseIdx = 0, charIdx = 0, isDeleting = false;
+      const type = () => {
+        const current = phrases[phraseIdx];
+        if (!isDeleting) {
+          el.textContent = current.substring(0, charIdx + 1);
+          charIdx++;
+          if (charIdx === current.length) {
+            setTimeout(() => { isDeleting = true; type(); }, 1800);
+            return;
+          }
+          setTimeout(type, 70);
+        } else {
+          el.textContent = current.substring(0, charIdx - 1);
+          charIdx--;
+          if (charIdx === 0) {
+            isDeleting = false;
+            phraseIdx = (phraseIdx + 1) % phrases.length;
+            setTimeout(type, 400);
+            return;
+          }
+          setTimeout(type, 40);
+        }
+      };
+      type();
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".star-count").forEach(el => {
+        const repo = el.dataset.repo;
+        if (!repo) return;
+        fetch("https://corsproxy.io/?" + encodeURIComponent("https://api.github.com/repos/" + repo))
+          .then(r => r.json())
+          .then(data => {
+            if (data.stargazers_count !== undefined) {
+              el.textContent = "★ " + data.stargazers_count;
+            }
+          })
+          .catch(() => {});
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const el = document.getElementById("wakatime-stats");
+      if (!el) return;
+      fetch("https://chalisehari.com.np/api/wakatime")
+        .then(r => r.json())
+        .then(data => {
+          const d = data.data;
+          if (!d) { el.innerHTML = '<span class="italic">No data this week</span>'; return; }
+          const total = d.total_seconds || 0;
+          const hours = Math.floor(total / 3600);
+          const mins = Math.floor((total % 3600) / 60);
+          let html = '<div class="text-stone-600 dark:text-stone-300 mb-2"><span class="font-semibold text-stone-700 dark:text-stone-200">' + hours + 'h ' + mins + 'm</span> total</div>';
+          const sections = [
+            { key: "languages", label: "Languages" },
+            { key: "editors", label: "Editors" },
+            { key: "operating_systems", label: "OS" },
+            { key: "projects", label: "Projects" }
+          ];
+          sections.forEach(s => {
+            const items = d[s.key];
+            if (!items || items.length === 0) return;
+            html += '<div class="mb-1.5"><span class="text-[10px] text-stone-400 dark:text-stone-500 uppercase tracking-wider">' + s.label + '</span><div class="flex flex-wrap gap-1 mt-0.5">';
+            items.slice(0, 5).forEach(item => {
+              html += '<span class="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded bg-stone-100 dark:bg-neutral-800 text-stone-600 dark:text-stone-400"><span class="w-1.5 h-1.5 rounded-full bg-stone-400 dark:bg-stone-500"></span>' + item.name + '</span>';
+            });
+            html += '</div></div>';
+          });
+          el.innerHTML = html;
+          el.classList.remove("italic", "text-stone-400", "dark:text-stone-500");
+          el.classList.add("text-xs");
+        })
+        .catch(() => { el.innerHTML = '<span class="italic">Wakatime unavailable</span>'; });
+    });
+  </script>
+
+  <script>
+    const showToast = (msg) => {
+      let toast = document.getElementById("copy-toast");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "copy-toast";
+        toast.className = "toast";
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2000);
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".email-copy").forEach(el => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          const email = el.dataset.email;
+          navigator.clipboard.writeText(email).then(() => {
+            showToast("Email copied to clipboard!");
+          }).catch(() => {
+            showToast("Failed to copy email");
+          });
+        });
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const bar = document.getElementById("home-progress");
+      if (!bar) return;
+      window.addEventListener("scroll", () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        bar.style.width = progress + "%";
+      }, { passive: true });
+    });
+  </script>
+
+
 </head>

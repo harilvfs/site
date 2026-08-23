@@ -1,0 +1,8 @@
+<div class="flex flex-wrap gap-2">
+  {{ range .Site.Data.tech_stack.list }}
+  <a href="{{ .url }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-stone-200 dark:border-neutral-700 bg-stone-50 dark:bg-neutral-800/50 hover:border-stone-300 dark:hover:border-neutral-600 transition-colors duration-200 no-underline">
+    <img src="{{ .badge }}" alt="{{ .name }}" class="h-4" loading="lazy" />
+    <span class="text-xs font-medium text-stone-700 dark:text-stone-300">{{ .name }}</span>
+  </a>
+  {{ end }}
+</div>

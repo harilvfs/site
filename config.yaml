@@ -12,6 +12,11 @@ security:
       - '^node$'
       - '^postcss$'
       - '^tailwindcss$'
+  http:
+    methods:
+      - (?i)GET
+    urls:
+      - '.*'
 title: Hari Chalise
 theme: aafu
 
@@ -29,6 +34,9 @@ params:
     - item: experiences
     - item: education
     - item: projects
+      panel_id: projects-panel
+    - item: tech_stack
     - item: skills
       panel_id: skill-panel
+    - item: currently
     - item: hobbies

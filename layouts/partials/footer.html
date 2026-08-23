@@ -1,9 +1,15 @@
 <footer class="text-xs text-center text-stone-400 dark:text-stone-600 py-4">
   <div class="flex justify-center gap-4 mb-2">
     {{ range $key, $value := .Site.Data.social }}
+    {{ if eq $value.title "Mail" }}
+    <a class="email-copy text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors text-lg cursor-pointer" data-email="harilvfs@chalisehari.com.np" title="Click to copy email">
+      <i class="{{ $value.icon }}"></i>
+    </a>
+    {{ else }}
     <a class="text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors text-lg" href="{{ .url }}" title="{{ $value.title }}">
       <i class="{{ $value.icon }}"></i>
     </a>
+    {{ end }}
     {{ end }}
   </div>
   <p class="markdownify">{{ .Site.Params.copyright | markdownify }}</p>

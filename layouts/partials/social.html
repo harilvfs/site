@@ -1,5 +1,10 @@
 <h1 class="mb-1 text-xl font-semibold">{{ .Site.Data.profile.name }}</h1>
-<p class="text-xs text-stone-400 dark:text-stone-500 mb-3"><i class="bi bi-geo-alt"></i> {{ .Site.Data.profile.location }}</p>
+<div class="flex items-center justify-center gap-1 text-xs text-stone-400 dark:text-stone-500 mb-1">
+  <i class="bi bi-geo-alt"></i> {{ .Site.Data.profile.location }}
+</div>
+<p class="text-xs text-blue-600 dark:text-blue-400 mb-3 h-4">
+  <span id="typed-tagline"></span><span class="terminal-cursor">|</span>
+</p>
 {{ if .Site.Data.profile.roles }}
 <div class="flex flex-wrap justify-center gap-1.5 mb-4">
   {{ range .Site.Data.profile.roles }}
@@ -19,8 +24,22 @@
   {{ end }}
 </div>
 {{ end }}
-<div class="flex justify-center mt-2">
+
+<div class="mb-3 w-full overflow-hidden rounded-lg border border-stone-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-2">
+  <img src="https://ghchart.rshah.org/harilvfs" alt="GitHub Contributions" class="w-full h-auto rounded" loading="lazy" />
+</div>
+
+<div class="mb-3 w-full overflow-hidden rounded-lg border border-stone-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-3 text-left">
+  <div class="flex items-center gap-2 mb-2">
+    <i class="bi bi-clock-history text-xs opacity-50"></i>
+    <span class="text-xs font-medium text-stone-500 dark:text-stone-400">This Week on Wakatime</span>
+  </div>
+  <div id="wakatime-stats" class="text-xs text-stone-400 dark:text-stone-500 italic">Loading...</div>
+</div>
+
+<div class="flex justify-center gap-2 mt-2">
   <a href="{{ `blog` | relURL }}" class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md border border-stone-200 dark:border-neutral-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-neutral-800 transition-colors duration-200">
     <i class="bi bi-pen text-[10px] opacity-60"></i> Blog
+    <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-stone-200 dark:bg-neutral-700 text-stone-500 dark:text-stone-400 tabular-nums">{{ len (where .Site.RegularPages "Section" "blog") }}</span>
   </a>
 </div>
