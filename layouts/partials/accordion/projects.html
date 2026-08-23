@@ -1,7 +1,7 @@
 {{ range .Site.Data.projects.list }}
 <div class="mb-4">
   <h4>
-    <a href="{{ .url }}">{{- .title -}}</a>
+    <a href="{{ .url }}"><i class="bi bi-github text-sm opacity-60 mr-2.5"></i> {{- .title -}}</a>
   </h4>
   <p class="text-sm text-stone-600 dark:text-stone-400 ml-4">{{- .description | markdownify -}}</p>
 </div>
