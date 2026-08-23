@@ -44,4 +44,24 @@
     {{ end }}
   </div>
 </div>
+
+<button id="home-back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 w-10 h-10 rounded-full border border-stone-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-stone-500 dark:text-stone-400 shadow-sm flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-stone-100 dark:hover:bg-neutral-800" style="opacity: 0; pointer-events: none;">
+  <i class="bi bi-arrow-up text-sm"></i>
+</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("home-back-to-top");
+    if (!btn) return;
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        btn.style.opacity = "1";
+        btn.style.pointerEvents = "auto";
+      } else {
+        btn.style.opacity = "0";
+        btn.style.pointerEvents = "none";
+      }
+    }, { passive: true });
+  });
+</script>
 {{ end }}
