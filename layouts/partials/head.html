@@ -294,11 +294,11 @@
       document.querySelectorAll(".star-count").forEach(el => {
         const repo = el.dataset.repo;
         if (!repo) return;
-        fetch("https://corsproxy.io/?" + encodeURIComponent("https://api.github.com/repos/" + repo))
+        fetch("https://api.github.com/repos/" + repo)
           .then(r => r.json())
           .then(data => {
             if (data.stargazers_count !== undefined) {
-              el.textContent = "★ " + data.stargazers_count;
+              el.textContent = "\u2605 " + data.stargazers_count;
             }
           })
           .catch(() => {});
