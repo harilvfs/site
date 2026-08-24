@@ -1,7 +1,10 @@
 {{ range .Site.Data.skills.list }}
 <div class="mb-3 skill-item">
   <div class="flex justify-between items-baseline mb-1">
-    <span class="text-sm text-stone-700 dark:text-stone-300">{{ .skill }}</span>
+    <span class="flex items-center gap-1.5 text-sm text-stone-700 dark:text-stone-300">
+      {{ if .icon }}<i class="{{ .icon }} text-xs opacity-50"></i>{{ end }}
+      {{ .skill }}
+    </span>
     <span class="text-xs text-stone-400 dark:text-stone-500 tabular-nums">{{ .level }}%</span>
   </div>
   <div class="h-1.5 rounded-full bg-stone-200 dark:bg-neutral-800 overflow-hidden">

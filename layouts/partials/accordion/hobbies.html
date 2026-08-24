@@ -1,5 +1,8 @@
-<ul class="pl-0 space-y-1">
+<div class="flex flex-wrap gap-2">
   {{ range .Site.Data.hobbies.list }}
-  <li class="text-stone-700 dark:text-stone-300">{{ .hobby }}</li>
+  <span class="inline-flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded-full border border-stone-200 dark:border-neutral-700 text-stone-600 dark:text-stone-300">
+    {{ if .icon }}<i class="{{ .icon }} text-xs opacity-60"></i>{{ end }}
+    {{ .hobby }}
+  </span>
   {{ end }}
-</ul>
+</div>

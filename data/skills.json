@@ -5,23 +5,28 @@
   "list": [
     {
       "skill": "Linux, Bash Scripting, Git",
-      "level": 85
+      "level": 85,
+      "icon": "bi bi-terminal"
     },
     {
       "skill": "Performance Tuning, System Administration",
-      "level": 75
+      "level": 75,
+      "icon": "bi bi-gear"
     },
     {
       "skill": "Designing",
-      "level": 60
+      "level": 60,
+      "icon": "bi bi-palette"
     },
     {
       "skill": "Networking",
-      "level": 50
+      "level": 50,
+      "icon": "bi bi-globe"
     },
     {
       "skill": "Rust Programming",
-      "level": 40
+      "level": 40,
+      "icon": "bi bi-code-slash"
     }
   ]
 }

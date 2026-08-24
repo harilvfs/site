@@ -3,10 +3,12 @@
   "icon": "bi bi-controller",
   "list": [
     {
-      "hobby": "Music"
+      "hobby": "Music",
+      "icon": "bi bi-music-note-beamed"
     },
     {
-      "hobby": "Linux"
+      "hobby": "Linux",
+      "icon": "bi bi-tux"
     }
   ]
 }
