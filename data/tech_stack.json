@@ -4,107 +4,92 @@
   "list": [
     {
       "name": "Linux",
-      "badge": "https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black",
+      "badge": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/linux-colored.svg",
       "url": "https://www.linux.org"
     },
     {
       "name": "Arch Linux",
-      "badge": "https://img.shields.io/badge/Arch_Linux-1793D1?style=flat&logo=archlinux&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/main/harilvfs/archx.png",
       "url": "https://archlinux.org"
     },
     {
       "name": "Fedora",
-      "badge": "https://img.shields.io/badge/Fedora-294172?style=flat&logo=fedora&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/main/harilvfs/fedora.png",
       "url": "https://fedoraproject.org"
     },
     {
       "name": "Debian",
-      "badge": "https://img.shields.io/badge/Debian-A80030?style=flat&logo=debian&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/main/harilvfs/debianx.png",
       "url": "https://www.debian.org"
     },
     {
       "name": "Raspberry Pi",
-      "badge": "https://img.shields.io/badge/Raspberry_Pi-C51A4A?style=flat&logo=raspberrypi&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/raspberrypi-colored.svg",
       "url": "https://www.raspberrypi.com"
     },
     {
       "name": "CachyOS",
-      "badge": "https://img.shields.io/badge/CachyOS-37B2A4?style=flat&logo=archlinux&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/harilvfs/CachyOS.svg",
       "url": "https://cachyos.org"
     },
     {
       "name": "Garuda Linux",
-      "badge": "https://img.shields.io/badge/Garuda_Linux-F8C630?style=flat&logo=archlinux&logoColor=black",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/harilvfs/garuda-purple.png",
       "url": "https://garudalinux.org"
     },
     {
       "name": "openSUSE",
-      "badge": "https://img.shields.io/badge/openSUSE-73BA25?style=flat&logo=opensuse&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/carch-docs/opensuse.png",
       "url": "https://opensuse.org"
     },
     {
       "name": "Bash",
-      "badge": "https://img.shields.io/badge/GNU_Bash-4EAA25?style=flat&logo=gnubash&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/gnubash-colored.svg",
       "url": "https://www.gnu.org/software/bash/"
     },
     {
       "name": "Rust",
-      "badge": "https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/main/harilvfs/rust.png",
       "url": "https://www.rust-lang.org"
     },
     {
       "name": "Git",
-      "badge": "https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg",
       "url": "https://git-scm.com"
     },
     {
       "name": "Neovim",
-      "badge": "https://img.shields.io/badge/Neovim-57A143?style=flat&logo=neovim&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/neovim-colored.svg",
       "url": "https://neovim.io"
     },
     {
       "name": "Vim",
-      "badge": "https://img.shields.io/badge/Vim-019833?style=flat&logo=vim&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/vim-colored.svg",
       "url": "https://www.vim.org"
     },
     {
       "name": "Helix",
-      "badge": "https://img.shields.io/badge/Helix-5A0F7F?style=flat&logo=datauri&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/main/harilvfs/helix.png",
       "url": "https://helix-editor.com"
     },
     {
-      "name": "i3wm",
-      "badge": "https://img.shields.io/badge/i3wm-5299D3?style=flat&logo=datauri&logoColor=white",
-      "url": "https://i3wm.org"
-    },
-    {
-      "name": "DWM",
-      "badge": "https://img.shields.io/badge/DWM-117A65?style=flat&logo=datauri&logoColor=white",
-      "url": "https://dwm.suckless.org"
-    },
-    {
       "name": "Docker",
-      "badge": "https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/docker-colored.svg",
       "url": "https://www.docker.com"
     },
     {
       "name": "Bun",
-      "badge": "https://img.shields.io/badge/Bun-14151E?style=flat&logo=bun&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/harilvfs/Bun.svg",
       "url": "https://bun.sh"
     },
     {
       "name": "Cloudflare",
-      "badge": "https://img.shields.io/badge/Cloudflare-F38020?style=flat&logo=cloudflare&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/main/harilvfs/cloudflare.png",
       "url": "https://www.cloudflare.com"
     },
     {
-      "name": "Tmux",
-      "badge": "https://img.shields.io/badge/Tmux-1BB91F?style=flat&logo=tmux&logoColor=white",
-      "url": "https://github.com/tmux/tmux"
-    },
-    {
       "name": "Electrum",
-      "badge": "https://img.shields.io/badge/Electrum-99AAAE?style=flat&logo=datauri&logoColor=white",
+      "badge": "https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/harilvfs/electrum.svg",
       "url": "https://electrum.org"
     }
   ]
