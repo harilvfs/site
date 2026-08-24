@@ -46,3 +46,4 @@ params:
       panel_id: skill-panel
     - item: currently
     - item: hobbies
+    - item: uses

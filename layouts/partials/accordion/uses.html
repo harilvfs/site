@@ -1,0 +1,22 @@
+<div class="space-y-3">
+  {{ range .Site.Data.uses.list }}
+  <div>
+    <div class="flex items-center gap-1.5 mb-1">
+      <i class="{{ .icon }} text-xs opacity-50"></i>
+      <span class="text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wide">{{ .category }}</span>
+    </div>
+    <ul class="ml-4 space-y-0.5">
+      {{ range .items }}
+      <li class="text-sm text-stone-700 dark:text-stone-300">
+        {{ if .url }}
+        <a href="{{ .url }}" class="hover:underline">{{ .name }}</a>
+        {{ else }}
+        {{ .name }}
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+  <p class="text-sm text-stone-400 dark:text-stone-500 italic">...and many more</p>
+</div>

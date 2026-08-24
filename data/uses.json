@@ -1,0 +1,167 @@
+{
+  "title": "Uses",
+  "icon": "bi bi-laptop",
+  "list": [
+    {
+      "category": "Operating System",
+      "icon": "bi bi-terminal",
+      "items": [
+        {
+          "name": "Linux (Arch btw)",
+          "url": "https://archlinux.org"
+        },
+        {
+          "name": "i3wm",
+          "url": "https://i3wm.org"
+        },
+        {
+          "name": "DWM",
+          "url": "https://dwm.suckless.org"
+        }
+      ]
+    },
+    {
+      "category": "Terminal & Shell",
+      "icon": "bi bi-terminal-split",
+      "items": [
+        {
+          "name": "Kitty",
+          "url": "https://github.com/kovidgoyal/kitty"
+        },
+        {
+          "name": "Alacritty",
+          "url": "https://github.com/alacritty/alacritty"
+        },
+        {
+          "name": "Fish",
+          "url": "https://github.com/fish-shell/fish-shell"
+        },
+        {
+          "name": "Bash",
+          "url": "https://www.gnu.org/software/bash/"
+        },
+        {
+          "name": "Zsh",
+          "url": "https://github.com/zsh-users/zsh"
+        },
+        {
+          "name": "Tmux",
+          "url": "https://github.com/tmux/tmux"
+        },
+        {
+          "name": "Zellij",
+          "url": "https://github.com/zellij-org/zellij"
+        },
+        {
+          "name": "Zoxide",
+          "url": "https://github.com/ajeetdsouza/zoxide"
+        }
+      ]
+    },
+    {
+      "category": "Editor",
+      "icon": "bi bi-code-slash",
+      "items": [
+        {
+          "name": "Neovim",
+          "url": "https://neovim.io"
+        },
+        {
+          "name": "NvChad",
+          "url": "https://github.com/nvchad/nvchad"
+        }
+      ]
+    },
+    {
+      "category": "Browser",
+      "icon": "bi bi-globe",
+      "items": [
+        {
+          "name": "Brave",
+          "url": "https://brave.com"
+        },
+        {
+          "name": "Helium",
+          "url": "https://github.com/imputnet/helium"
+        }
+      ]
+    },
+    {
+      "category": "Themes",
+      "icon": "bi bi-palette",
+      "items": [
+        {
+          "name": "Catppuccin",
+          "url": "https://catppuccin.com"
+        },
+        {
+          "name": "Nord",
+          "url": "https://github.com/nordtheme/nord"
+        },
+        {
+          "name": "NordArc",
+          "url": "https://github.com/harilvfs/icons"
+        }
+      ]
+    },
+    {
+      "category": "Tools",
+      "icon": "bi bi-tools",
+      "items": [
+        {
+          "name": "Git",
+          "url": "https://git-scm.com"
+        },
+        {
+          "name": "Hugo",
+          "url": "https://gohugo.io"
+        },
+        {
+          "name": "Bun",
+          "url": "https://bun.sh"
+        },
+        {
+          "name": "Docker",
+          "url": "https://www.docker.com"
+        },
+        {
+          "name": "Distrobox",
+          "url": "https://github.com/89luca89/distrobox"
+        }
+      ]
+    },
+    {
+      "category": "Programming Languages",
+      "icon": "bi bi-braces",
+      "items": [
+        {
+          "name": "Rust"
+        },
+        {
+          "name": "Shell Script"
+        }
+      ]
+    },
+    {
+      "category": "Music",
+      "icon": "bi bi-music-note-beamed",
+      "items": [
+        {
+          "name": "YT-Music"
+        },
+        {
+          "name": "mpd + ncmpcpp"
+        }
+      ]
+    },
+    {
+      "category": "Notes",
+      "icon": "bi bi-journal-text",
+      "items": [
+        {
+          "name": "Markdown"
+        }
+      ]
+    }
+  ]
+}
