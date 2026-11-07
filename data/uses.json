@@ -9,14 +9,6 @@
         {
           "name": "Linux (Arch btw)",
           "url": "https://archlinux.org"
-        },
-        {
-          "name": "i3wm",
-          "url": "https://i3wm.org"
-        },
-        {
-          "name": "DWM",
-          "url": "https://dwm.suckless.org"
         }
       ]
     },
@@ -29,32 +21,12 @@
           "url": "https://github.com/kovidgoyal/kitty"
         },
         {
-          "name": "Alacritty",
-          "url": "https://github.com/alacritty/alacritty"
-        },
-        {
           "name": "Fish",
           "url": "https://github.com/fish-shell/fish-shell"
         },
         {
-          "name": "Bash",
-          "url": "https://www.gnu.org/software/bash/"
-        },
-        {
-          "name": "Zsh",
-          "url": "https://github.com/zsh-users/zsh"
-        },
-        {
           "name": "Tmux",
           "url": "https://github.com/tmux/tmux"
-        },
-        {
-          "name": "Zellij",
-          "url": "https://github.com/zellij-org/zellij"
-        },
-        {
-          "name": "Zoxide",
-          "url": "https://github.com/ajeetdsouza/zoxide"
         }
       ]
     },
@@ -138,7 +110,7 @@
           "name": "Rust"
         },
         {
-          "name": "Shell Script"
+          "name": "Bash Script (for kinda linux things and automation)"
         }
       ]
     },
@@ -159,7 +131,8 @@
       "icon": "bi bi-journal-text",
       "items": [
         {
-          "name": "Markdown"
+          "name": "Notesnook",
+          "url": "https://notesnook.com/"
         }
       ]
     }
