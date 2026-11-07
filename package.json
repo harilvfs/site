@@ -14,9 +14,9 @@
   "author": "Darshan Baral",
   "license": "MIT",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.11",
-    "@tailwindcss/typography": "^0.5.16",
-    "pagefind": "^1.5.2",
-    "tailwindcss": "^4.1.11"
+    "@tailwindcss/cli": "^4.3.5",
+    "@tailwindcss/typography": "^0.5.20",
+    "pagefind": "^1.6.0",
+    "tailwindcss": "^4.3.5"
   }
 }
