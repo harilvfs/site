@@ -5,12 +5,17 @@
     {
       "title": "Carch",
       "url": "https://github.com/harilvfs/carch",
-      "description": "A CLI tool to streamline and automate Linux system's initial setup"
+      "description": "A Rust-powered TUI that automates post-installation setup and theming on Arch, Fedora, and openSUSE"
     },
     {
       "title": "npltz",
       "url": "https://github.com/harilvfs/npltz",
-      "description": "Nepali BS Calendar (Patro) TUI for Terminal"
+      "description": "Free and open-source Nepali (Bikram Sambat) calendar for your terminal. Browse BS dates with AD support, fully offline"
+    },
+    {
+      "title": "npltz-android",
+      "url": "https://github.com/harilvfs/npltz-android",
+      "description": "Free and open-source Nepali (Bikram Sambat) calendar app with BS/AD dates, events, reminders and widgets. Offline, no ads, no tracking"
     },
     {
       "title": "Arch Wiki",
@@ -25,7 +30,7 @@
     {
       "title": "wallpapers",
       "url": "https://github.com/harilvfs/wallpapers",
-      "description": "Beautiful Nord & Catppuccin Wallpapers 🏞️"
+      "description": "Beautiful Nord & Catppuccin Wallpapers"
     },
     {
       "title": "DWM",
@@ -40,7 +45,7 @@
     {
       "title": "Ladybird Nightly",
       "url": "https://github.com/harilvfs/ladybird-nightly",
-      "description": "Unofficial nightly CI builds of the Ladybird browser"
+      "description": "Unofficial nightly CI builds of the Ladybird browser for Linux"
     }
   ]
 }
