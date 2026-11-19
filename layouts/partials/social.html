@@ -25,16 +25,8 @@
 </div>
 {{ end }}
 
-<div class="mb-3 w-full overflow-hidden rounded-lg border border-stone-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-2">
-  <img src="https://ghchart.rshah.org/harilvfs" alt="GitHub Contributions" class="w-full h-auto rounded" loading="lazy" />
-</div>
-
 <div class="mb-3 w-full overflow-hidden rounded-lg border border-stone-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-3 text-left">
-  <div class="flex items-center gap-2 mb-2">
-    <i class="bi bi-clock-history text-xs opacity-50"></i>
-    <span class="text-xs font-medium text-stone-500 dark:text-stone-400">This Week on Wakatime</span>
-  </div>
-  <div id="wakatime-stats" class="text-xs text-stone-400 dark:text-stone-500 italic">Loading...</div>
+  {{ partial "contributions" . }}
 </div>
 
 <div class="flex justify-center gap-2 mt-2">

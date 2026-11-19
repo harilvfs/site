@@ -307,42 +307,6 @@
   </script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const el = document.getElementById("wakatime-stats");
-      if (!el) return;
-      fetch("https://chalisehari.com.np/api/wakatime")
-        .then(r => r.json())
-        .then(data => {
-          const d = data.data;
-          if (!d) { el.innerHTML = '<span class="italic">No data this week</span>'; return; }
-          const total = d.total_seconds || 0;
-          const hours = Math.floor(total / 3600);
-          const mins = Math.floor((total % 3600) / 60);
-          let html = '<div class="text-stone-600 dark:text-stone-300 mb-2"><span class="font-semibold text-stone-700 dark:text-stone-200">' + hours + 'h ' + mins + 'm</span> total</div>';
-          const sections = [
-            { key: "languages", label: "Languages" },
-            { key: "editors", label: "Editors" },
-            { key: "operating_systems", label: "OS" },
-            { key: "projects", label: "Projects" }
-          ];
-          sections.forEach(s => {
-            const items = d[s.key];
-            if (!items || items.length === 0) return;
-            html += '<div class="mb-1.5"><span class="text-[10px] text-stone-400 dark:text-stone-500 uppercase tracking-wider">' + s.label + '</span><div class="flex flex-wrap gap-1 mt-0.5">';
-            items.slice(0, 5).forEach(item => {
-              html += '<span class="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded bg-stone-100 dark:bg-neutral-800 text-stone-600 dark:text-stone-400"><span class="w-1.5 h-1.5 rounded-full bg-stone-400 dark:bg-stone-500"></span>' + item.name + '</span>';
-            });
-            html += '</div></div>';
-          });
-          el.innerHTML = html;
-          el.classList.remove("italic", "text-stone-400", "dark:text-stone-500");
-          el.classList.add("text-xs");
-        })
-        .catch(() => { el.innerHTML = '<span class="italic">Wakatime unavailable</span>'; });
-    });
-  </script>
-
-  <script>
     const showToast = (msg) => {
       let toast = document.getElementById("copy-toast");
       if (!toast) {
