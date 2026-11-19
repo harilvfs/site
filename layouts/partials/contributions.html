@@ -1,0 +1,188 @@
+{{ with .Site.Data.contributions }}
+{{ $data := . }}
+<div class="contrib-card" data-username="{{ $data.username }}">
+  <div class="contrib-head">
+    <span class="contrib-title"><i class="bi bi-graph-up-arrow"></i> <span id="contrib-total">{{ $data.total }}</span> contributions</span>
+    <a href="https://github.com/{{ $data.username }}" target="_blank" rel="noopener noreferrer" class="contrib-user">@{{ $data.username }}</a>
+  </div>
+
+  <div class="contrib-scroller">
+    <div class="contrib-canvas">
+      <div class="contrib-months" id="contrib-months">
+        {{ range $data.months }}
+        <span style="left: {{ mul .index 10 }}px">{{ .label }}</span>
+        {{ end }}
+      </div>
+      <div class="contrib-main">
+        <div class="contrib-wd" aria-hidden="true">
+          <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
+        </div>
+        <div class="contrib-grid" id="contrib-grid">
+          {{ range $week := $data.weeks }}
+          {{ range $day := $week }}
+          {{ if $day }}
+          <span class="contrib-cell contrib-l{{ $day.level }}" title="{{ $day.date }}: {{ $day.count }} contribution{{ if ne $day.count 1 }}s{{ end }}" aria-label="{{ $day.date }}: {{ $day.count }} contribution{{ if ne $day.count 1 }}s{{ end }}"></span>
+          {{ else }}
+          <span class="contrib-cell contrib-empty" aria-hidden="true"></span>
+          {{ end }}
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contrib-foot">
+    <span class="contrib-range" id="contrib-range">{{ $data.range.from }} &ndash; {{ $data.range.to }}</span>
+    <span class="contrib-legend">Less
+      <i class="contrib-cell contrib-l0"></i>
+      <i class="contrib-cell contrib-l1"></i>
+      <i class="contrib-cell contrib-l2"></i>
+      <i class="contrib-cell contrib-l3"></i>
+      <i class="contrib-cell contrib-l4"></i>
+      More
+    </span>
+  </div>
+</div>
+
+<style>
+  .contrib-card { font-size: 9px; line-height: 1; }
+  .contrib-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px; }
+  .contrib-title { color: #57534e; font-weight: 600; font-size: 10px; white-space: nowrap; }
+  .contrib-user { color: #a8a29e; font-size: 9px; text-decoration: none; }
+  .contrib-user:hover { text-decoration: underline; }
+  .contrib-scroller { overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; scrollbar-width: thin; scrollbar-color: #d6d3d1 transparent; }
+  .contrib-scroller::-webkit-scrollbar { height: 4px; }
+  .contrib-scroller::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 4px; }
+  .contrib-canvas { width: max-content; }
+  .contrib-months { position: relative; height: 11px; margin-left: 24px; }
+  .contrib-months span { position: absolute; top: 0; color: #a8a29e; font-size: 8px; white-space: nowrap; }
+  .contrib-main { display: flex; gap: 4px; }
+  .contrib-wd { display: grid; grid-template-rows: repeat(7, 8px); gap: 2px; width: 20px; flex: none; color: #a8a29e; font-size: 7px; line-height: 8px; }
+  .contrib-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 8px; grid-template-rows: repeat(7, 8px); gap: 2px; }
+  .contrib-cell { display: block; width: 8px; height: 8px; border-radius: 2px; }
+  .contrib-l0 { background: #ebedf0; }
+  .contrib-l1 { background: #9be9a8; }
+  .contrib-l2 { background: #40c463; }
+  .contrib-l3 { background: #30a14e; }
+  .contrib-l4 { background: #216e39; }
+  .contrib-empty { background: transparent; }
+  .contrib-cell:not(.contrib-empty):hover { outline: 1px solid #78716c; transform: scale(1.2); }
+  .contrib-foot { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 5px; color: #a8a29e; font-size: 8px; }
+  .contrib-range { white-space: nowrap; }
+  .contrib-legend { display: inline-flex; align-items: center; gap: 2px; white-space: nowrap; }
+  .contrib-legend i { width: 7px; height: 7px; }
+
+  html.dark .contrib-title { color: #d6d3d1; }
+  html.dark .contrib-user,
+  html.dark .contrib-months span,
+  html.dark .contrib-wd,
+  html.dark .contrib-foot { color: #78716c; }
+  html.dark .contrib-cell { background: #161b22; }
+  html.dark .contrib-l1 { background: #0e4429; }
+  html.dark .contrib-l2 { background: #006d32; }
+  html.dark .contrib-l3 { background: #26a641; }
+  html.dark .contrib-l4 { background: #39d353; }
+  html.dark .contrib-empty { background: transparent; }
+  html.dark .contrib-scroller { scrollbar-color: #44403c transparent; }
+  html.dark .contrib-scroller::-webkit-scrollbar-thumb { background: #44403c; }
+  html.dark .contrib-cell:not(.contrib-empty):hover { outline-color: #d6d3d1; }
+</style>
+
+<script>
+  (function () {
+    const card = document.querySelector(".contrib-card");
+    if (!card) return;
+
+    const username = card.dataset.username || "harilvfs";
+    const DAYS = 365;
+    const DAY_MS = 86400000;
+    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    fetch("https://github-contributions-api.jogruber.de/v4/" + encodeURIComponent(username) + "?years=all")
+      .then(function (res) {
+        if (!res.ok) throw new Error("bad response");
+        return res.json();
+      })
+      .then(function (payload) {
+        const byDate = new Map((payload.contributions || []).map(function (c) { return [c.date, c]; }));
+
+        const today = new Date().toISOString().slice(0, 10);
+        const todayMs = Date.parse(today + "T00:00:00Z");
+        const startMs = todayMs - (DAYS - 1) * DAY_MS;
+
+        const days = [];
+        for (let ms = startMs; ms <= todayMs; ms += DAY_MS) {
+          const date = new Date(ms).toISOString().slice(0, 10);
+          const entry = byDate.get(date) || {};
+          days.push({ date: date, count: entry.count || 0, level: entry.level || 0 });
+        }
+
+        const weeks = [];
+        let week = [];
+        const firstWeekday = new Date(days[0].date + "T00:00:00Z").getUTCDay();
+        for (let i = 0; i < firstWeekday; i++) week.push(null);
+        days.forEach(function (day) {
+          week.push(day);
+          if (week.length === 7) { weeks.push(week); week = []; }
+        });
+        if (week.length) {
+          while (week.length < 7) week.push(null);
+          weeks.push(week);
+        }
+
+        const months = [];
+        let lastMonth = -1;
+        weeks.forEach(function (w, index) {
+          const first = w.find(Boolean);
+          if (!first) return;
+          const month = Number(first.date.slice(5, 7));
+          if (month !== lastMonth) {
+            months.push({ index: index, label: MONTHS[month - 1] });
+            lastMonth = month;
+          }
+        });
+
+        const total = days.reduce(function (sum, day) { return sum + day.count; }, 0);
+
+        const monthsEl = card.querySelector("#contrib-months");
+        if (monthsEl) {
+          monthsEl.replaceChildren.apply(monthsEl, months.map(function (m) {
+            const span = document.createElement("span");
+            span.style.left = (m.index * 10) + "px";
+            span.textContent = m.label;
+            return span;
+          }));
+        }
+
+        const gridEl = card.querySelector("#contrib-grid");
+        if (gridEl) {
+          const fragment = document.createDocumentFragment();
+          weeks.forEach(function (w) {
+            w.forEach(function (day) {
+              const cell = document.createElement("span");
+              if (!day) {
+                cell.className = "contrib-cell contrib-empty";
+                cell.setAttribute("aria-hidden", "true");
+              } else {
+                cell.className = "contrib-cell contrib-l" + day.level;
+                const label = day.date + ": " + day.count + " contribution" + (day.count === 1 ? "" : "s");
+                cell.title = label;
+                cell.setAttribute("aria-label", label);
+              }
+              fragment.appendChild(cell);
+            });
+          });
+          gridEl.replaceChildren(fragment);
+        }
+
+        const totalEl = card.querySelector("#contrib-total");
+        if (totalEl) totalEl.textContent = total;
+
+        const rangeEl = card.querySelector("#contrib-range");
+        if (rangeEl) rangeEl.textContent = days[0].date + " \u2013 " + days[days.length - 1].date;
+      })
+      .catch(function () {});
+  })();
+</script>
+{{ end }}
