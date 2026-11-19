@@ -1,8 +1,8 @@
 {{ define "main" }}
 <div id="home-progress" class="fixed top-0 left-0 h-1 bg-stone-800 dark:bg-stone-200 z-50 transition-none" style="width: 0%"></div>
 <div class="grid grid-cols-1 md:grid-cols-5 gap-6 py-6">
-  <div class="col-span-1 md:col-span-2 md:sticky md:top-6 md:self-start flex flex-col justify-center items-center md:items-stretch">
-    <div class="bg-white dark:bg-neutral-900 border border-stone-200 dark:border-neutral-800 rounded-lg p-6 relative">
+  <div class="col-span-1 md:col-span-2 md:sticky md:top-6 md:self-start flex flex-col justify-center items-center md:items-stretch min-w-0">
+    <div class="bg-white dark:bg-neutral-900 border border-stone-200 dark:border-neutral-800 rounded-lg p-6 relative w-full min-w-0">
       <button
         class="theme-toggle absolute top-3 right-3 w-8 h-8 rounded-full border border-stone-200 dark:border-neutral-700 text-stone-400 dark:text-stone-500 cursor-pointer flex items-center justify-center transition-all duration-200 hover:bg-stone-100 dark:hover:bg-neutral-800 hover:text-stone-600 dark:hover:text-stone-300"
         onclick="toggleTheme()"
