@@ -10,7 +10,7 @@
       >
         <i class="text-sm"></i>
       </button>
-      <script>var t=localStorage.getItem("theme"),i=document.querySelector(".theme-toggle i");if(i){i.className=t==="light"?"bi bi-moon text-sm":"bi bi-sun text-sm"}</script>
+      <script>var t=null;try{t=localStorage.getItem("theme");}catch(e){}var i=document.querySelector(".theme-toggle i");if(i){i.className=t==="light"?"bi bi-moon text-sm":"bi bi-sun text-sm"}</script>
       <div class="flex flex-col items-center">
         {{ partial "profilePhoto" . }}
         <div class="mt-4 text-center w-full">{{ partial "social" . }}</div>
@@ -45,16 +45,16 @@
   </div>
 </div>
 
-<button id="home-back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 w-10 h-10 rounded-full border border-stone-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-stone-500 dark:text-stone-400 shadow-sm flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-stone-100 dark:hover:bg-neutral-800" style="opacity: 0; pointer-events: none;">
+<button id="home-back-to-top" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 w-10 h-10 rounded-full border border-stone-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-stone-500 dark:text-stone-400 shadow-sm flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-stone-100 dark:hover:bg-neutral-800" style="opacity: 0; pointer-events: none;">
   <i class="bi bi-arrow-up text-sm"></i>
 </button>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("home-back-to-top");
+  document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("home-back-to-top");
     if (!btn) return;
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
+    window.addEventListener("scroll", function() {
+      if ((window.pageYOffset || document.documentElement.scrollTop) > 300) {
         btn.style.opacity = "1";
         btn.style.pointerEvents = "auto";
       } else {

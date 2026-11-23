@@ -1,9 +1,9 @@
 <div id="giscus-comments" class="mt-12 pt-8 border-t border-stone-200 dark:border-neutral-800"></div>
 
 <script>
-  const giscusTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  var giscusTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 
-  const script = document.createElement('script');
+  var script = document.createElement('script');
   script.src = 'https://giscus.app/client.js';
   script.setAttribute('data-repo', 'harilvfs/site');
   script.setAttribute('data-repo-id', 'R_kgDORWJmJA');
@@ -20,16 +20,18 @@
   script.async = true;
   document.getElementById('giscus-comments').appendChild(script);
 
-  const sendTheme = (theme) => {
-    const iframe = document.querySelector('#giscus-comments iframe');
+  function sendTheme(theme) {
+    var iframe = document.querySelector('#giscus-comments iframe');
     if (iframe) {
       iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
     }
-  };
+  }
 
-  const observer = new MutationObserver(() => {
-    const isDark = document.documentElement.classList.contains('dark');
+  if (window.MutationObserver) {
+    var observer = new MutationObserver(function() {
+    var isDark = document.documentElement.classList.contains('dark');
     sendTheme(isDark ? 'dark' : 'light');
-  });
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
 </script>

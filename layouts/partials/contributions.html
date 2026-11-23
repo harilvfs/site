@@ -91,13 +91,17 @@
 
 <script>
   (function () {
-    const card = document.querySelector(".contrib-card");
+    var card = document.querySelector(".contrib-card");
     if (!card) return;
 
-    const username = card.dataset.username || "harilvfs";
-    const DAYS = 365;
-    const DAY_MS = 86400000;
-    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var username = card.getAttribute("data-username") || "harilvfs";
+    var DAYS = 365;
+    var DAY_MS = 86400000;
+    var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    /* The chart is rendered into the HTML at build time. Keep that complete
+       fallback on browsers without Fetch; refresh it on newer browsers. */
+    if (!window.fetch) return;
 
     fetch("https://github-contributions-api.jogruber.de/v4/" + encodeURIComponent(username) + "?years=all")
       .then(function (res) {
@@ -105,23 +109,24 @@
         return res.json();
       })
       .then(function (payload) {
-        const byDate = new Map((payload.contributions || []).map(function (c) { return [c.date, c]; }));
+        var byDate = {};
+        (payload.contributions || []).forEach(function (c) { byDate[c.date] = c; });
 
-        const today = new Date().toISOString().slice(0, 10);
-        const todayMs = Date.parse(today + "T00:00:00Z");
-        const startMs = todayMs - (DAYS - 1) * DAY_MS;
+        var today = new Date().toISOString().slice(0, 10);
+        var todayMs = Date.parse(today + "T00:00:00Z");
+        var startMs = todayMs - (DAYS - 1) * DAY_MS;
 
-        const days = [];
-        for (let ms = startMs; ms <= todayMs; ms += DAY_MS) {
-          const date = new Date(ms).toISOString().slice(0, 10);
-          const entry = byDate.get(date) || {};
+        var days = [];
+        for (var ms = startMs; ms <= todayMs; ms += DAY_MS) {
+          var date = new Date(ms).toISOString().slice(0, 10);
+          var entry = byDate[date] || {};
           days.push({ date: date, count: entry.count || 0, level: entry.level || 0 });
         }
 
-        const weeks = [];
-        let week = [];
-        const firstWeekday = new Date(days[0].date + "T00:00:00Z").getUTCDay();
-        for (let i = 0; i < firstWeekday; i++) week.push(null);
+        var weeks = [];
+        var week = [];
+        var firstWeekday = new Date(days[0].date + "T00:00:00Z").getUTCDay();
+        for (var i = 0; i < firstWeekday; i++) week.push(null);
         days.forEach(function (day) {
           week.push(day);
           if (week.length === 7) { weeks.push(week); week = []; }
@@ -131,55 +136,58 @@
           weeks.push(week);
         }
 
-        const months = [];
-        let lastMonth = -1;
+        var months = [];
+        var lastMonth = -1;
         weeks.forEach(function (w, index) {
-          const first = w.find(Boolean);
+          var first = null;
+          for (var j = 0; j < w.length; j++) if (w[j]) { first = w[j]; break; }
           if (!first) return;
-          const month = Number(first.date.slice(5, 7));
+          var month = Number(first.date.slice(5, 7));
           if (month !== lastMonth) {
             months.push({ index: index, label: MONTHS[month - 1] });
             lastMonth = month;
           }
         });
 
-        const total = days.reduce(function (sum, day) { return sum + day.count; }, 0);
+        var total = days.reduce(function (sum, day) { return sum + day.count; }, 0);
 
-        const monthsEl = card.querySelector("#contrib-months");
+        var monthsEl = card.querySelector("#contrib-months");
         if (monthsEl) {
-          monthsEl.replaceChildren.apply(monthsEl, months.map(function (m) {
-            const span = document.createElement("span");
+          while (monthsEl.firstChild) monthsEl.removeChild(monthsEl.firstChild);
+          months.forEach(function (m) {
+            var span = document.createElement("span");
             span.style.left = (m.index * 10) + "px";
             span.textContent = m.label;
-            return span;
-          }));
+            monthsEl.appendChild(span);
+          });
         }
 
-        const gridEl = card.querySelector("#contrib-grid");
+        var gridEl = card.querySelector("#contrib-grid");
         if (gridEl) {
-          const fragment = document.createDocumentFragment();
+          var fragment = document.createDocumentFragment();
           weeks.forEach(function (w) {
             w.forEach(function (day) {
-              const cell = document.createElement("span");
+              var cell = document.createElement("span");
               if (!day) {
                 cell.className = "contrib-cell contrib-empty";
                 cell.setAttribute("aria-hidden", "true");
               } else {
                 cell.className = "contrib-cell contrib-l" + day.level;
-                const label = day.date + ": " + day.count + " contribution" + (day.count === 1 ? "" : "s");
+                var label = day.date + ": " + day.count + " contribution" + (day.count === 1 ? "" : "s");
                 cell.title = label;
                 cell.setAttribute("aria-label", label);
               }
               fragment.appendChild(cell);
             });
           });
-          gridEl.replaceChildren(fragment);
+          while (gridEl.firstChild) gridEl.removeChild(gridEl.firstChild);
+          gridEl.appendChild(fragment);
         }
 
-        const totalEl = card.querySelector("#contrib-total");
+        var totalEl = card.querySelector("#contrib-total");
         if (totalEl) totalEl.textContent = total;
 
-        const rangeEl = card.querySelector("#contrib-range");
+        var rangeEl = card.querySelector("#contrib-range");
         if (rangeEl) rangeEl.textContent = days[0].date + " \u2013 " + days[days.length - 1].date;
       })
       .catch(function () {});

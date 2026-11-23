@@ -94,18 +94,19 @@
   </style>
 
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("DOMContentLoaded", function() {
+      if (typeof PagefindUI === "undefined") return;
       new PagefindUI({ element: "#search", showSubResults: true, placeholderText: "Search posts..." });
 
-      const searchInput = document.querySelector(".pagefind-ui__search-input");
-      const blogList = document.getElementById("blog-list");
-      const blogPagination = document.getElementById("blog-pagination");
+      var searchInput = document.querySelector(".pagefind-ui__search-input");
+      var blogList = document.getElementById("blog-list");
+      var blogPagination = document.getElementById("blog-pagination");
 
-      const toggleBlog = () => {
-        const hasQuery = searchInput && searchInput.value.trim().length > 0;
+      function toggleBlog() {
+        var hasQuery = searchInput && searchInput.value.trim().length > 0;
         if (blogList) blogList.style.display = hasQuery ? "none" : "block";
         if (blogPagination) blogPagination.style.display = hasQuery ? "none" : "flex";
-      };
+      }
 
       if (searchInput) {
         searchInput.addEventListener("input", toggleBlog);
