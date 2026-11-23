@@ -1,7 +1,7 @@
 <div class="flex flex-wrap gap-2">
   {{ range .Site.Data.tech_stack.list }}
   <a href="{{ .url }}" target="_blank" rel="noreferrer" title="{{ .name }}" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-stone-200 dark:border-neutral-700 bg-stone-50 dark:bg-neutral-800/50 hover:border-stone-300 dark:hover:border-neutral-600 transition-colors duration-200">
-    <img src="{{ .badge }}" alt="{{ .name }}" class="w-5 h-5 object-contain" loading="lazy" />
+    <img src="{{ .badge }}" alt="{{ .name }}" width="20" height="20" class="w-5 h-5 object-contain" />
   </a>
   {{ end }}
 </div>
